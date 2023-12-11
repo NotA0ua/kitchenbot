@@ -1,4 +1,6 @@
 from loguru import logger
+from src.__init__ import admins
+
 
 from aiogram import Router, F
 from aiogram.types import (
@@ -21,4 +23,15 @@ async def start_cmd(message: Message):
         )
         await user.insert()
         
-    await message.reply("<b>Привет!</b>")
+    await message.reply("<b>Привет, я кухонный бот!</b>")
+
+
+@router.message(Command("add_recipe"))
+async def add_recipes(message: Message):
+    if message.from_user.id in admins:
+        await message.reply("<b>Рецепт успешно добавлен</b>")
+    else:
+        await message.reply("<b>У вас нет прав использовать эту команду!</b>")
+
+# @router.message(Command("recipes"))
+# async def recipes_cmd(message: Message):
