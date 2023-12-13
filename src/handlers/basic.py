@@ -33,6 +33,6 @@ async def inventory_cmd(message: Message):
 
     text = "<i><b>Твой инвентарь:</b></i>\n\n"
     for key, item in user.inventory.model_dump().items():
-        text += f"{item['emoji']} {item['name']} - {item['quantity']}\n" if item['quantity'] > 0 else ""
+        text += f"<b>{item['emoji']} <code>{item['name']}</code> - {item['quantity']}</b>\n" if item['quantity'] > 0 else ""
 
     await message.reply(text)
