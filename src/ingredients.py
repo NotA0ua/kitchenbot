@@ -5,6 +5,7 @@ class Ingredient(BaseModel):
     name: str
     eng: str
     emoji: str = Field(max_length=1)
+    quantity: int = 0
     uid: int
 
 
